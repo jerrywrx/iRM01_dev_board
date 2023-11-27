@@ -86,16 +86,16 @@ void imuTask(const void* args){
 	imu.INS_euler[1] = 0.0f;
 	imu.INS_euler[2] = 0.0f;
 
-//    while (true) {
-//        button_init.input(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13));
-//		if (button_init.negEdge()){
-//			init = true;
-//			break;
-//		}
-//	}
+    while (true) {
+        button_init.input(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13));
+		if (button_init.negEdge()){
+			init = true;
+			break;
+		}
+	}
 
-    while (dbus->swr != remote::DOWN) {osDelay(10);}
-    init = true;
+//    while (dbus->swr != remote::DOWN) {osDelay(10);}
+//    init = true;
 
 	while (true) {
             MahonyAHRSupdateIMU(imu.INS_quat, imu.gyr_rps[0], imu.gyr_rps[1], imu.gyr_rps[2], imu.acc_mps2[0],
